@@ -1,7 +1,7 @@
 'use strict'
 
-import General, { ComponentData } from "./general.js";
-import Light from './basicSettings.js';
+import General, { ComponentData } from "./general";
+import Light from './basicSettings';
 
 declare var Chart: any;
 
