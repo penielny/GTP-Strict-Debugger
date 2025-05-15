@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["es2020", "dom"],
+    "module": "ESNext",
+    // "moduleResolution": "bundler",
+    "outDir": "./dist",
+    // "allowImportingTsExtensions": true,
+    "noEmit": false, // <- Enable emit to get compiled JS
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["main.ts", "ts/**/*.ts"]
+}
+
+
+
+
+
+
