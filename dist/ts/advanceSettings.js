@@ -1,5 +1,5 @@
 'use strict';
-import Light from './basicSettings';
+import Light from './basicSettings.js';
 class AdvanceSettings extends Light {
     constructor() {
         super();
