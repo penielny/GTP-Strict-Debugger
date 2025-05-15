@@ -7,7 +7,7 @@ class Light extends General {
         super();
     }
 
-    notification(message: string):string {
+    notification(message: string): string {
         return `
             <div class="notification">
                 <div>
@@ -30,17 +30,17 @@ class Light extends General {
         }, 5000);
     }
 
-    lightSwitchOn(lightButtonElement: HTMLElement):void {
+    lightSwitchOn(lightButtonElement: HTMLElement): void {
         lightButtonElement.setAttribute('src', './assets/svgs/light_bulb.svg');
-        lightButtonElement.setAttribute('data-lightOn', './assets/svgs/light_bulb_off.svg');
+        lightButtonElement.setAttribute('data-light-on', './assets/svgs/light_bulb.svg');
     }
 
-    lightSwitchOff(lightButtonElement: HTMLElement):void {
+    lightSwitchOff(lightButtonElement: HTMLElement): void {
         lightButtonElement.setAttribute('src', './assets/svgs/light_bulb_off.svg');
-        lightButtonElement.setAttribute('data-lightOn', './assets/svgs/light_bulb.svg');
+        lightButtonElement.setAttribute('data-light-off', './assets/svgs/light_bulb_off.svg');
     };
 
-    lightComponentSelectors(lightButtonElement: HTMLElement):{room: string, componentData: ComponentData, childElement: Element | null, background: Element | null} {
+    lightComponentSelectors(lightButtonElement: HTMLElement): { room: string, componentData: ComponentData, childElement: Element | null, background: Element | null } {
         const room = this.getSelectedComponentName(lightButtonElement);
         // FIX: const componentData = this.getComponent(room[0]);
         const componentData = this.getComponent(room);
@@ -49,7 +49,7 @@ class Light extends General {
         return { room, componentData, childElement, background };
     }
 
-    toggleLightSwitch(lightButtonElement: HTMLElement):void {
+    toggleLightSwitch(lightButtonElement: HTMLElement): void {
         const { componentData: component, childElement, background } = this.lightComponentSelectors(lightButtonElement);
         const slider = this.closestSelector(lightButtonElement, '.rooms', '#light_intensity') as HTMLInputElement
 
@@ -70,7 +70,7 @@ class Light extends General {
         }
     }
 
-    handleLightIntensitySlider(element: HTMLElement, intensity: number):void {
+    handleLightIntensitySlider(element: HTMLElement, intensity: number): void {
 
         const { componentData } = this.lightComponentSelectors(element);
 
@@ -88,12 +88,12 @@ class Light extends General {
         if (!componentData || !lightSwitch) return;
         componentData.isLightOn = intensity !== 0;
         this.sliderLight(componentData.isLightOn, lightSwitch as HTMLElement);
-    
+
         // componentData.isLightOn = false;
         // this.sliderLight(componentData.isLightOn, lightSwitch as HTMLElement);
     }
 
-    sliderLight(isLightOn: Boolean, lightButtonElement: HTMLElement):void {
+    sliderLight(isLightOn: Boolean, lightButtonElement: HTMLElement): void {
         const { componentData: component, childElement, background } = this.lightComponentSelectors(lightButtonElement);
 
         if (!component) return;
